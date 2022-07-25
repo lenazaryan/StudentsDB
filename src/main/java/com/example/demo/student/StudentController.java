@@ -1,6 +1,12 @@
 package com.example.demo.student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -31,10 +37,18 @@ public class StudentController {
 
     @PutMapping
     public Student updateStudent(@RequestParam Long id,
-                              @RequestParam(required = false) String name,
-                              @RequestParam(required = false) String email){
-        return studentService.updateStudent(id, name, email);
+                                 @RequestParam(required = false) String name,
+                                 @RequestParam(required = false) String email,
+                                 @RequestParam(required = false) LocalDate dob){
+        return studentService.updateStudentHeaders(id, name, email, dob);
     }
+//    @PutMapping(path = "students/student/id",
+//            consumes={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE} )
+//    public Student updateStudentJson(@PathVariable (value = "id") Long id, @RequestBody Student student) {
+//        Student returnValue = new Student();
+//        return returnValue;
+//    }
 
     @DeleteMapping
     public void deleteStudent(@RequestParam Long id) { studentService.deleteStudentByID(id);}

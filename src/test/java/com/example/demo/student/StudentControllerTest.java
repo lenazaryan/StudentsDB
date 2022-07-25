@@ -22,16 +22,7 @@ class StudentControllerTest {
     StudentController studentController;
 
     @Test
-    void getAllStudents(String url) throws IllegalArgumentException {
-        //given
-        String path = "/students";
-        url = BASE_URL + path;
-
-        //when
-
-        //then
-//        List<Student> expectedResult = ;
-//        assertThat(actualResult, HttpStatus.OK(200), expectedResult);
+    void getAllStudents() {
     }
 
     @Test
